@@ -10,7 +10,6 @@ abstract class Proprietario{
     private $setor;
     private $telefone;
     private $ocupacao;
-    private $veiculo;
     private $qrCode;
     
 
@@ -156,26 +155,6 @@ abstract class Proprietario{
     public function setOcupacao($ocupacao)
     {
         $this->ocupacao = $ocupacao;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of veiculo
-     */ 
-    public function getVeiculo()
-    {
-        return $this->veiculo;
-    }
-
-    /**
-     * Set the value of veiculo
-     *
-     * @return  self
-     */ 
-    public function setVeiculo(Veiculo $veiculo)
-    {
-        array_push($this->veiculo, $veiculo);
 
         return $this;
     }

@@ -7,6 +7,7 @@ class Veiculo {
     private $placa;
     private $modelo;
     private $cor;
+    private $proprietario;
 
     /**
      * Get the value of id
@@ -84,6 +85,26 @@ class Veiculo {
     public function setCor($cor)
     {
         $this->cor = $cor;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of proprietario
+     */ 
+    public function getProprietario()
+    {
+        return $this->proprietario;
+    }
+
+    /**
+     * Set the value of proprietario
+     *
+     * @return  self
+     */ 
+    public function setProprietario(Proprietario $proprietario)
+    {
+        $this->proprietario = $proprietario;
 
         return $this;
     }
