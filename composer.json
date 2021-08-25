@@ -2,6 +2,13 @@
     "autoload": {
         "psr-4": {
             "App\\": "App/"
-        }
+        },
+        "files": [
+            "App/config/config.php"
+        ]
+    },
+    "require": {
+        "coffeecode/router": "1.0.*",
+        "coffeecode/datalayer": "^1.0"
     }
 }

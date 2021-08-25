@@ -1,3 +1,5 @@
 <?php
 
-echo "Olá";
+require "../vendor/autoload.php";
+
+echo "Teste";

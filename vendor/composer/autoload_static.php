@@ -6,7 +6,16 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitafd2017996ed54550a8353ba1255ebb3
 {
+    public static $files = array (
+        '5a97f5f2def6eb69a84e82ab8749f32b' => __DIR__ . '/../..' . '/App/config/config.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'CoffeeCode\\Router\\' => 18,
+            'CoffeeCode\\DataLayer\\' => 21,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,6 +23,14 @@ class ComposerStaticInitafd2017996ed54550a8353ba1255ebb3
     );
 
     public static $prefixDirsPsr4 = array (
+        'CoffeeCode\\Router\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/coffeecode/router/src',
+        ),
+        'CoffeeCode\\DataLayer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/coffeecode/datalayer/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App',
