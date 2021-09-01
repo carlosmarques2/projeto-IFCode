@@ -4,17 +4,22 @@ namespace App\Models;
 
 abstract class Proprietario{
     private $id;
-    private $nome;
-    private $sobrenome;
-    private $matricula;
-    private $setor;
-    private $telefone;
-    private $ocupacao;
+    private string $nome;
+    private string $sobrenome;
+    private string $matricula;
+    private string $setor;
+    private string $telefone;
+    private string $ocupacao;
     
 
-    public function __construct(){
-        // $this->qrCode = new QRCode();
-        // array_push($this->veiculo, new Veiculo());
+    public function __construct(ProprietarioDao $prop){
+        $this->id = $prop->id;
+        $this->nome = $prop->nome;
+        $this->sobrenome = $prop->sobrenome;
+        $this->matricula = $prop->matricula;
+        $this->setor = $prop->setor;
+        $this->telefone = $prop->telefone;
+        $this->ocupacao = $prop->funcao;
     }
 
     /**
@@ -50,7 +55,7 @@ abstract class Proprietario{
      *
      * @return  self
      */ 
-    public function setNome($nome)
+    public function setNome(string $nome)
     {
         $this->nome = $nome;
 
@@ -70,7 +75,7 @@ abstract class Proprietario{
      *
      * @return  self
      */ 
-    public function setSobrenome($sobrenome)
+    public function setSobrenome(string $sobrenome)
     {
         $this->sobrenome = $sobrenome;
 
@@ -90,7 +95,7 @@ abstract class Proprietario{
      *
      * @return  self
      */ 
-    public function setMatricula($matricula)
+    public function setMatricula(string $matricula)
     {
         $this->matricula = $matricula;
 
@@ -110,7 +115,7 @@ abstract class Proprietario{
      *
      * @return  self
      */ 
-    public function setSetor($setor)
+    public function setSetor(string $setor)
     {
         $this->setor = $setor;
 
@@ -130,7 +135,7 @@ abstract class Proprietario{
      *
      * @return  self
      */ 
-    public function setTelefone($telefone)
+    public function setTelefone(string $telefone)
     {
         $this->telefone = $telefone;
 
@@ -150,7 +155,7 @@ abstract class Proprietario{
      *
      * @return  self
      */ 
-    public function setOcupacao($ocupacao)
+    public function setOcupacao(string $ocupacao)
     {
         $this->ocupacao = $ocupacao;
 

@@ -8,7 +8,11 @@
         ]
     },
     "require": {
+        "php": "^8.0",
+        "ext-pdo":"*",
+		"chillerlan/php-qrcode": "dev-main",
         "coffeecode/router": "1.0.*",
-        "coffeecode/datalayer": "^1.0"
+        "coffeecode/datalayer": "^1.0",
+        "league/plates":"v3.4.0"
     }
 }

@@ -1,9 +1,16 @@
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [NC,L]
+Options All -Indexes
 
-#RewriteCond %{HTTPS} !=on
-#RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+## ROUTER WWW Redirect.
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-Options -Indexes
+## ROUTER HTTPS Redirect
+#RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#RewriteCond %{HTTPS} off
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ROUTER URL Rewrite
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?route=/$1 [L,QSA]

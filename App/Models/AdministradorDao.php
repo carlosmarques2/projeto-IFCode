@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CoffeeCode\DataLayer\DataLayer;
 
-class AdministradorDao extends DataLayer {
+class AdministradorDao extends DataLayer implements UsuarioDao {
 
     public function __construct()
     {

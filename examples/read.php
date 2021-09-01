@@ -5,6 +5,7 @@ use App\Models\ProprietarioDao;
 use App\Models\UsuarioDao;
 
 require __DIR__."/../vendor/autoload.php";
+include __DIR__."/../App/functions/functions.php";
 
 // use CoffeeCode\DataLayer\Connect;
 
@@ -27,12 +28,14 @@ $list = $props->find()->fetch(true);
 
 // /** @var $propItem ProprietarioDao */
 // foreach($list as $propItem){
-//     var_dump($propItem->data());
+//     dd($propItem->data());
+//     //var_dump($propItem->data());
 //     foreach((array)$propItem->veiculos() as $veiculo){
-//         var_dump($veiculo->data());
+//         dd($veiculo->data());
+//         //var_dump($veiculo->data());
 //     }
 // }
 
 
 
-echo var_dump($list[0]->veiculos());
+// echo var_dump($list[0]->veiculos());

@@ -11,6 +11,15 @@ class ComposerStaticInitafd2017996ed54550a8353ba1255ebb3
     );
 
     public static $prefixLengthsPsr4 = array (
+        'c' => 
+        array (
+            'chillerlan\\Settings\\' => 20,
+            'chillerlan\\QRCode\\' => 18,
+        ),
+        'L' => 
+        array (
+            'League\\Plates\\' => 14,
+        ),
         'C' => 
         array (
             'CoffeeCode\\Router\\' => 18,
@@ -23,6 +32,18 @@ class ComposerStaticInitafd2017996ed54550a8353ba1255ebb3
     );
 
     public static $prefixDirsPsr4 = array (
+        'chillerlan\\Settings\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-settings-container/src',
+        ),
+        'chillerlan\\QRCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
+        ),
+        'League\\Plates\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/plates/src',
+        ),
         'CoffeeCode\\Router\\' => 
         array (
             0 => __DIR__ . '/..' . '/coffeecode/router/src',

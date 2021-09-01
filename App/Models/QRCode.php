@@ -4,7 +4,7 @@ namespace App\Models;
 
 class QRCode{
     private $id;
-    private $codigoDecriptado;
+    private string $codigoDecriptado;
     private Proprietario $proprietario;
 
     /**
@@ -40,7 +40,7 @@ class QRCode{
      *
      * @return  self
      */ 
-    public function setCodigoDecriptado($codigoDecriptado)
+    public function setCodigoDecriptado(string $codigoDecriptado)
     {
         $this->codigoDecriptado = $codigoDecriptado;
 

@@ -11,12 +11,12 @@ class VeiculoDao extends DataLayer {
         parent::__construct('veiculos', ['id_prop', 'placa', 'modelo', 'cor'], 'id', false);
     }
 
-    public function add(ProprietarioDao $proprietario, string $placa, string $modelo, string $cor):VeiculoDao
+    public function add(Veiculo $veic):VeiculoDao
     {
-        $this->id_prop = $proprietario->id;
-        $this->placa = $placa;
-        $this->modelo = $modelo;
-        $this->cor = $cor;
+        $this->id_prop = $veic->getProprietario()->getId();
+        $this->placa = $veic->getPlaca();
+        $this->modelo = $veic->getModelo();
+        $this->cor = $veic->getCor();
 
         return $this;
     }

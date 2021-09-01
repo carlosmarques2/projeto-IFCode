@@ -11,4 +11,11 @@ class AcessoDao extends DataLayer {
         parent::__construct("acessos", ['acesso', 'usuario', 'endereco'], "id", false);
     }
     
+    public function add(Acesso $acesso):AcessoDao{
+        $this->acesso = $acesso->getDataDeAcesso();
+        $this->usuario = $acesso->getUsuario();
+        $this->endereco = $acesso->getEnderecoIp();
+
+        return $this;
+    }
 }
