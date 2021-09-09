@@ -24,3 +24,7 @@ function checaErro($error, $message){
     }
     return false;
 }
+
+function geraQrCode(){
+    
+}

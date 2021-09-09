@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 use CoffeeCode\Router\Router;
 
 require "../vendor/autoload.php";
@@ -10,7 +12,7 @@ $router = new Router(ROOT);
 /*
  * Controllers
  */
-$router->namespace("App");
+$router->namespace("App\Controllers");
 
 /*
  * WEB
@@ -18,21 +20,29 @@ $router->namespace("App");
  */
 $router->group(null);
 $router->get('/', 'Web:home');
-
+$router->get('/teste', 'Web:rotaTest');
 /**
  * Cadastro
  */
 $router->group('cadastro');
 $router->get('/', 'Web:cadastro');
+$router->post('/', 'Web:novoCadastro');
 
 /**
  * Lista
  */
 $router->group('lista');
 $router->get('/', 'Web:lista');
-$router->get('/{proprietario}', 'Web:lista');
+$router->get('/{proprietario}', 'Web:proprietario');
 $router->get('/veiculos', 'Web:listaVeiculos');
 $router->get('/qrcodes', 'Web:listaQrcodes');
+$router->post('/', 'Web:editar');
+
+/**
+ * Proprietario
+ */
+// $router->group('proprietario');
+// $router->get('/{}', 'Web:proprietario');
 
 /**
  * Admin

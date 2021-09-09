@@ -2,67 +2,21 @@
 
 namespace App\Models;
 
-class QRCode{
-    private $id;
-    private string $codigoDecriptado;
-    private Proprietario $proprietario;
+use CoffeeCode\DataLayer\DataLayer;
 
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
+class QRCode extends DataLayer {
+
+    public function __construct()
     {
-        return $this->id;
+        parent::__construct('qrcode', ['id_prop', 'nome_do_arquivo', 'diretorio'], 'id', false);
     }
 
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */ 
-    public function setId($id)
-    {
-        $this->id = $id;
+    public function add(Proprietario $proprietario, string $nome_do_arquivo, $diretorio):QRCode{
+        $this->id_prop = $proprietario->id;
+        $this->nome_do_arquivo = $nome_do_arquivo;
+        $this->diretorio = $diretorio;
 
-        return $this;
-    }
-
-    /**
-     * Get the value of codigoDecriptado
-     */ 
-    public function getCodigoDecriptado()
-    {
-        return $this->codigoDecriptado;
-    }
-
-    /**
-     * Set the value of codigoDecriptado
-     *
-     * @return  self
-     */ 
-    public function setCodigoDecriptado(string $codigoDecriptado)
-    {
-        $this->codigoDecriptado = $codigoDecriptado;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of proprietario
-     */ 
-    public function getProprietario()
-    {
-        return $this->proprietario;
-    }
-
-    /**
-     * Set the value of proprietario
-     *
-     * @return  self
-     */ 
-    public function setProprietario(Proprietario $proprietario)
-    {
-        $this->proprietario = $proprietario;
+        $this->save();
 
         return $this;
     }

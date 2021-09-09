@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '1cc185023672ffbcfcf82931ce43557d5e4784f8',
+    'reference' => 'ca205b8b980a9e7d36ef2a1d2c125e02d6b41e04',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,15 +42,14 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '1cc185023672ffbcfcf82931ce43557d5e4784f8',
+      'reference' => 'ca205b8b980a9e7d36ef2a1d2c125e02d6b41e04',
     ),
     'chillerlan/php-qrcode' => 
     array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
+      'pretty_version' => '4.3.1',
+      'version' => '4.3.1.0',
       'aliases' => 
       array (
-        0 => '9999999-dev',
       ),
       'reference' => 'be3beb936c21fe53a4e7e8f7f3582e9f02443666',
     ),

@@ -1,7 +1,3 @@
-<?php
-session_start();
-$_SESSION['nome'] = "IFRR";
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,6 +8,7 @@ $_SESSION['nome'] = "IFRR";
     <title><?= $title ?></title>
     <link rel="stylesheet" type="text/css" href="<?= url("../public/assets/css/adminx.css") ?>" media="screen" />
     <link rel="stylesheet" href="<?= url("../public/assets/css/style2.css") ?>">
+    <link rel="stylesheet" href="<?= url("../public/assets/css/styleCadastro.css")?>">
 </head>
 
 <body>
@@ -128,7 +125,7 @@ $_SESSION['nome'] = "IFRR";
                         </li>
 
                         <li class="sidebar-nav-item">
-                            <a class="sidebar-nav-link" href="<?= url("painel") ?>">
+                            <a id="nav-item-painel" class="sidebar-nav-link" href="<?= url("painel") ?>">
                                 <span class="sidebar-nav-icon">
                                     <i data-feather="activity"></i>
                                 </span>
@@ -170,7 +167,7 @@ $_SESSION['nome'] = "IFRR";
                 $(document.getElementById("navTables")).addClass("show");
             $(navActive).addClass("active");
         });
-
+        
     </script>
 </body>
 

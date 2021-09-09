@@ -64,7 +64,7 @@
                                             </td>
                                         <?php endif; ?>
                                         <td>
-                                            <a href="prop_info.php?id=<?= $proprietario->id ?>"><button class="btn btn-sm btn-primary">Info</button></a>
+                                            <a href="<?=url("lista/$proprietario->id")?>"><button class="btn btn-sm btn-primary">Info</button></a>
                                             <a href="qr-code.php?id=<?= $proprietario->id ?>"><button class="btn btn-sm btn-dark">QR Code</button></a>
                                         </td>
                                     </tr>

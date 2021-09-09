@@ -44,7 +44,10 @@
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label" for="validationCustom03">Matrícula</label>
                                         <input type="text" name="matricula" class="form-control" id="validationCustom03" placeholder="Matrícula" required>
-                                        <div class="invalid-feedback">
+                                        <div class="matriculaExiste">
+                                            Número de matrícula informado já existe
+                                        </div>
+                                        <div class="invalid-feedback ">
                                             Campo Obrigatório
                                         </div>
                                     </div>
@@ -88,6 +91,9 @@
                                         <div class="col-md-5 mb-3">
                                             <label class="form-label" for="validationCustom06">Placa</label>
                                             <input type="text" name="placa" class="form-control input-placa" id="validationCustom06" placeholder="Placa" required>
+                                            <div class="placaExiste">
+                                                Número da placa informado já existe
+                                            </div>
                                             <div class="invalid-feedback">
                                                 Campo Obrigatório
                                             </div>
@@ -122,7 +128,7 @@
     </div>
 </div>
 
-<?php $this->start('scripts');?>
+<?php $this->start('scripts'); ?>
 <script>
     (function() {
         'use strict';
@@ -140,6 +146,57 @@
             }
         }, false);
     })();
+    $('.matriculaExiste').hide();
+    $('.placaExiste').hide();
+    var dados = <?= json_encode($this->data['cadastro_invalido']) ?>;
+
+    if (dados.erro) {
+
+        document.getElementsByName('nome').item(0).setAttribute("value", dados.proprietario.nome);
+        document.getElementsByName('sobrenome').item(0).setAttribute("value", dados.proprietario.sobrenome);
+        document.getElementsByName('matricula').item(0).setAttribute("placeholder", dados.proprietario.matricula);
+        document.getElementsByName('setor').item(0).setAttribute("value", dados.proprietario.setor);
+        document.getElementsByName('telefone').item(0).setAttribute("value", dados.proprietario.telefone);
+
+        if (dados.proprietario.funcao == "Servidor") document.getElementById('gridRadios2').checked = true;
+
+        //document.getElementsByName('placa').item(0).setAttribute("value", dados.veiculo.placa);
+        document.getElementsByName('modelo').item(0).setAttribute("value", dados.veiculo.modelo);
+        document.getElementsByName('cor').item(0).setAttribute("value", dados.veiculo.cor);
+
+        if (dados.erro === 10) {
+            
+            $('#validationCustom03').select();
+            $('#validationCustom03').addClass("matriculaEhIgual");
+            $('.matriculaExiste').show();
+
+            $("#validationCustom03").on('input', function() {
+                if ($(this).val() !== "") {
+                    $(this).removeClass("matriculaEhIgual");
+                    $('.matriculaExiste').hide();
+                } else {
+                    $(this).addClass("matriculaEhIgual");
+                    $('.matriculaExiste').show();
+                }
+            });
+        } else {
+            document.getElementsByName('placa').item(0).setAttribute("placeholder", dados.veiculo.placa);
+            $('#validationCustom06').select();
+            $('#validationCustom06').addClass("matriculaEhIgual");
+            $('.placaExiste').show();
+
+            $("#validationCustom06").on('input', function() {
+                if ($(this).val() !== "") {
+                    $(this).removeClass("matriculaEhIgual");
+                    $('.placaExiste').hide();
+                } else {
+                    $(this).addClass("matriculaEhIgual");
+                    $('.placaExiste').show();
+                }
+            });
+        }
+
+    }
 
     var cleave = new Cleave('.input-phone', {
         delimiter: ' - ',
@@ -153,4 +210,4 @@
         uppercase: true
     });
 </script>
-<?php $this->end();?>
+<?php $this->end(); ?>

@@ -2,8 +2,8 @@
     "packages": [
         {
             "name": "chillerlan/php-qrcode",
-            "version": "dev-main",
-            "version_normalized": "dev-main",
+            "version": "4.3.1",
+            "version_normalized": "4.3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chillerlan/php-qrcode.git",
@@ -30,7 +30,6 @@
                 "setasign/fpdf": "Required to use the QR FPDF output."
             },
             "time": "2021-01-05T21:21:28+00:00",
-            "default-branch": true,
             "type": "library",
             "installation-source": "source",
             "autoload": {

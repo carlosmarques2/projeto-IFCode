@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4883fd2a14e03f7395109e3d0b04770",
+    "content-hash": "16924176b4f545070200082f691570e9",
     "packages": [
         {
             "name": "chillerlan/php-qrcode",
-            "version": "dev-main",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chillerlan/php-qrcode.git",
@@ -34,7 +34,6 @@
                 "chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",
                 "setasign/fpdf": "Required to use the QR FPDF output."
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -318,9 +317,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "chillerlan/php-qrcode": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

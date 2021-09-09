@@ -15,7 +15,7 @@ define('DIR_QRCODES', 'https://localhost/ifcode/public/assets/qrcodes');
  */
 define('ER401', 'O acesso foi negado devido a credenciais inválidas.');
 define('ER404', 'A página solicitada não pôde ser encontrada.');
-define('ER405', 'Recurso não implementado.');
+define('ER501', 'Recurso não implementado.');
 define('ER409', 'O servidor expirou aguardando o pedido.');
 
 // define('UNSET_URI_COUNT', 1);
@@ -42,4 +42,8 @@ function url($uri):string{
     }
 
     return ROOT;
+}
+
+function asset($path):string{
+    return ROOT."/assets/{$path}";
 }
