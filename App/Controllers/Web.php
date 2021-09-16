@@ -2,107 +2,30 @@
 
 namespace App\Controllers;
 
-
 use App\Models\Acesso;
 use App\Models\Proprietario;
 use App\Models\QRCode;
 use App\Models\Usuario;
 use App\Models\Veiculo;
-use League\Plates\Engine;
 
 require __DIR__ . "../../../vendor/autoload.php";
 
-class Web
-{
-    private $view;
+class Web extends Controller
+{   
 
-    public function __construct()
-    {
-        $this->view = new Engine(__DIR__ . "../../Views", "php");
+    public function __construct($router){
+        parent::__construct($router);
     }
 
-    public function ajaxMessage(string $message, string $type): string{
-        return json_encode(["message" => "<div class=\"message {$type}\">{$message}</div>"]);
-    }
-
-    public function home($data)
+    public function home($data):void
     {
-        $proprietarios = (new Proprietario())->find()->fetch(true);
 
         echo $this->view->render("home", [
             "title" => "Home | " . SITE,
-            "proprietarios" => $proprietarios,
+            "numero_de_proprietarios" => (new Proprietario())->find()->count(),
             "pagina" => "home",
             "notificacao" => $data ? true : false
         ]);
-    }
-
-    public function cadastro($data)
-    {
-        echo $this->view->render("cadastro", [
-            "title" => "Cadastro | " . SITE,
-            "pagina" => "cadastro",
-            "cadastro_invalido" => $data
-        ]);
-    }
-
-    /**
-     * 
-     */
-    public function novoCadastro($data)
-    {
-        $proprietario = new Proprietario();
-        $proprietario->nome = $data['nome'];
-        $proprietario->sobrenome = $data['sobrenome'];
-        $proprietario->matricula = $data['matricula'];
-        $proprietario->setor = $data['setor'];
-        $proprietario->telefone = $data['telefone'];
-        $proprietario->funcao = $data['ocupacao'];
-        
-
-        if($proprietario->save()) {
-            $veiculo = new Veiculo();
-            $veiculo->add($proprietario, $data['placa'], $data['modelo'], $data['cor']);
-
-            if(isset($veiculo->id)){
-                
-                $_SESSION['cadastro_realizado'] = true;
-                header("location: ".url(''));
-            } else {
-                $proprietario->destroy();
-                $this->cadastro($data = [
-                    'proprietario' => $proprietario = [
-                        'nome' => $data['nome'],
-                        'sobrenome' => $data['sobrenome'],
-                        'matricula' => $data['matricula'],
-                        'setor' => $data['setor'],
-                        'telefone' => $data['telefone'],
-                        'funcao' => $data['ocupacao']
-                    ],
-                    'veiculo' => $veiculo = [
-                        'placa' => $data['placa'],
-                        'modelo' => $data['modelo'],
-                        'cor' => $data['cor']],
-                    'erro' => 20
-                ]);
-            }
-        } else {
-            $this->cadastro($data = [
-                'proprietario' => $proprietario = [
-                    'nome' => $data['nome'],
-                    'sobrenome' => $data['sobrenome'],
-                    'matricula' => $data['matricula'],
-                    'setor' => $data['setor'],
-                    'telefone' => $data['telefone'],
-                    'funcao' => $data['ocupacao']
-                ],
-                'veiculo' => $veiculo = [
-                    'placa' => $data['placa'],
-                    'modelo' => $data['modelo'],
-                    'cor' => $data['cor']],
-                'erro' => 10
-            ]);
-        }
     }
 
     public function editar($data)
@@ -113,39 +36,9 @@ class Web
         ]);
     }
 
-    public function lista($data)
-    {
-        $proprietarios = (new Proprietario())->find()->fetch(true);
-
-        echo $this->view->render("lista", [
-            "title" => "Lista de Proprietários | " . SITE,
-            "proprietarios" => $proprietarios,
-            "pagina" => "lista"
-        ]);
-    }
-
-    public function proprietario($data)
-    {
-
-        /**
-         * Realiza uma consulta em proprietarios passando o id
-         */
-        $proprietario = (new Proprietario())->findById($data['proprietario']);
-
-        $veiculos = $proprietario->veiculos();
-
-
-        echo $this->view->render("proprietario", [
-            "title" => "Informações do Proprietário | " . SITE,
-            "proprietario" => $proprietario,
-            "veiculos" => $veiculos,
-            "pagina" => "lista"
-        ]);
-    }
-
     public function listaVeiculos($data)
     {
-        $veiculos = (new Veiculo())->find()->fetch(true);
+        $veiculos = (new Veiculo())->find()->order('modelo')->fetch(true);
 
         echo $this->view->render("lista_veiculos", [
             "title" => "Lista de Veículos | " . SITE,

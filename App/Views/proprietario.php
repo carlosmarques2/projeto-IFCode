@@ -23,7 +23,7 @@
                     <div class="card-body" id="card1">
                         <div class="row">
                             <div class="col-lg-auto">
-                                <img src="<?=url("../public/assets/img/retrato-generico.png")?>" alt="" width="205" height="228">
+                                <img src="<?= url("../public/assets/img/retrato-generico.png") ?>" alt="" width="205" height="228">
                             </div>
                             <form class="col-lg-auto">
                                 <div class="row">
@@ -55,7 +55,10 @@
                             </form>
                         </div>
                         <div class="row justify-content-end mt-3 pr-3">
-                            <button id="button" class="btn btn-sm ml-1 mb-1 btn-secondary">Gerar QR Code</button>
+                            <a id="button" class="btn btn-sm ml-1 mb-1 btn-secondary" href="#" data-action="<?= $router->route('cadastro.geraqr'); ?>" data-id="<?= $proprietario->id; ?>" data-nome_img_qr="<?= 'qrcode-' . $proprietario->id; ?>">
+                                Gerar QR Code
+                            </a>
+
                             <a href="cadastrar_veiculo.php?id=<?= $proprietario->id ?>">
                                 <button class="btn btn-sm ml-1 mb-1 btn-success">Adic. Veículo</button>
                             </a>
@@ -93,7 +96,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ((array)$veiculos as $veiculo) { ?>
+                                            <?php foreach ((array)$veiculos as $veiculo) : ?>
                                                 <tr>
                                                     <th scope="row">
                                                         <label class="custom-control custom-checkbox m-0 p-0">
@@ -113,7 +116,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                            <?php   } ?>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -125,8 +128,28 @@
         </div>
     </div>
 </div>
-<?php $this->start('scripts');?>
+<?php $this->start('scripts'); ?>
 <script>
+    const notification_falha = new window.notifications({
+        notificationSound: <?= json_encode(url("assets/media/notification.mp3")) ?>,
+        notification: {
+            autoHide: true,
+            duration: 5000,
+            style: 'danger',
+            position: 'bottom',
+        }
+    });
+
+    const notification_sucesso = new window.notifications({
+        notificationSound: <?= json_encode(url("assets/media/notification.mp3")) ?>,
+        notification: {
+            autoHide: true,
+            duration: 5000,
+            style: 'success',
+            position: 'bottom',
+        }
+    });
+
     (function() {
         'use strict';
 
@@ -144,16 +167,23 @@
         }, false);
     })();
 
-    $('#button').click(function() {
-        $.ajax({
-            type: "POST",
-            url: "gera-qr-code.php",
-            data: {
-                id: "<?php echo $prop['id']; ?>"
-            }
-        }).done(function(msg) {
-            alert("QR Code Gerado com Sucesso!");
+    $("body").on("click", "[data-action]", function(e) {
+        e.preventDefault();
+        var data = $(this).data();
+        var mensagem = new Array();
+
+        $.post(data.action, data, function() {
+            // $('#button').addClass('disabled');
+        }, "json").fail(function(callback) {
+            notification_falha.fire("Ocorreu um erro ao gerar o QR Code");
+        }).done(function(callback) {
+            if(callback.mensagem)
+                notification_falha.fire(callback.mensagem);
+            else 
+                notification_sucesso.fire('QR Code gerado com sucesso!');
         });
     });
+
+    <?= $router->route('lista.geraqr', ["id" => $proprietario->id, "nome_img_qr" => 'qrcode-' . $proprietario->id]); ?>
 </script>
-<?php $this->end();?>
+<?php $this->end(); ?>

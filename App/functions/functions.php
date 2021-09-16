@@ -1,12 +1,7 @@
 <?php
 
-// function dd($params = [], $die = true){
-//     echo '<pre>';
-//     print_r($params);
-//     echo '</pre>';
-
-//     if($die) die();
-// }
+use App\Models\Proprietario;
+use App\Util\Util;
 
 function dd($data){
     highlight_string("<?php\n " . var_export($data, true) . "?>");
@@ -17,7 +12,7 @@ function dd($data){
 /**
  * Verifica se o código de erro tem uma mensagem atribuida.
  */
-function checaErro($error, $message){
+function verificaErro($error, $message){
     foreach($message as $item){
         if($item == $error)
             return true;
@@ -25,6 +20,20 @@ function checaErro($error, $message){
     return false;
 }
 
-function geraQrCode(){
-    
+function verificaInclude(){
+    echo "Funcionou";
+}
+
+
+function geraQrCode(string $id, string $nome_img_qr){
+    (new Util())->getQrCode()->generate(URL_QRCODE.'/'.$id, DIR_QRCODES."\\".$nome_img_qr.'.png');
+}
+
+function verificaQrCodes3(Array $proprietarios){
+    $cont = 0;
+    foreach($proprietarios as $proprietario){
+        if(file_exists(DIR_QRCODES.'\qrcode-'.$proprietario->id.'.png'))
+            $cont +=1;
+    }
+    return $cont;
 }

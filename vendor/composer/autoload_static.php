@@ -11,19 +11,26 @@ class ComposerStaticInitafd2017996ed54550a8353ba1255ebb3
     );
 
     public static $prefixLengthsPsr4 = array (
-        'c' => 
+        'S' => 
         array (
-            'chillerlan\\Settings\\' => 20,
-            'chillerlan\\QRCode\\' => 18,
+            'SimpleSoftwareIO\\QrCode\\' => 24,
         ),
         'L' => 
         array (
             'League\\Plates\\' => 14,
         ),
+        'D' => 
+        array (
+            'DASPRiD\\Enum\\' => 13,
+        ),
         'C' => 
         array (
             'CoffeeCode\\Router\\' => 18,
             'CoffeeCode\\DataLayer\\' => 21,
+        ),
+        'B' => 
+        array (
+            'BaconQrCode\\' => 12,
         ),
         'A' => 
         array (
@@ -32,17 +39,17 @@ class ComposerStaticInitafd2017996ed54550a8353ba1255ebb3
     );
 
     public static $prefixDirsPsr4 = array (
-        'chillerlan\\Settings\\' => 
+        'SimpleSoftwareIO\\QrCode\\' => 
         array (
-            0 => __DIR__ . '/..' . '/chillerlan/php-settings-container/src',
-        ),
-        'chillerlan\\QRCode\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
+            0 => __DIR__ . '/..' . '/simplesoftwareio/simple-qrcode/src',
         ),
         'League\\Plates\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/plates/src',
+        ),
+        'DASPRiD\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dasprid/enum/src',
         ),
         'CoffeeCode\\Router\\' => 
         array (
@@ -51,6 +58,10 @@ class ComposerStaticInitafd2017996ed54550a8353ba1255ebb3
         'CoffeeCode\\DataLayer\\' => 
         array (
             0 => __DIR__ . '/..' . '/coffeecode/datalayer/src',
+        ),
+        'BaconQrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
         ),
         'App\\' => 
         array (

@@ -13,15 +13,6 @@
         <div class="pb-3">
             <h1>Proprietários</h1>
         </div>
-
-        <!-- <div class="row">
-						<div class="col">
-							<div class="alert alert-warning" role="alert">
-								<strong>DataTables are a jQuery-only plugin</strong><br />
-								If you know a similar vanilla JS library that you want to see supported, feel free to open an issue on GitHub.
-							</div>
-						</div>
-					</div> -->
         <div class="row">
             <div class="col">
                 <div class="card mb-grid">
@@ -64,7 +55,7 @@
                                             </td>
                                         <?php endif; ?>
                                         <td>
-                                            <a href="<?=url("lista/$proprietario->id")?>"><button class="btn btn-sm btn-primary">Info</button></a>
+                                            <a href="<?= $router->route('lista.proprietario', ["id" => $proprietario->id]); ?>"><button class="btn btn-sm btn-primary">Info</button></a>
                                             <a href="qr-code.php?id=<?= $proprietario->id ?>"><button class="btn btn-sm btn-dark">QR Code</button></a>
                                         </td>
                                     </tr>
@@ -78,7 +69,7 @@
     </div>
 </div>
 
-<?php $this->start('scripts');?>
+<?php $this->start('scripts'); ?>
 <script>
     $(document).ready(function() {
         var table = $('[data-table-proprietarios]').DataTable({
@@ -102,5 +93,19 @@
           table.search($(this).val()).draw() ;
         }); */
     });
+    $('#notificacao-qrcodes').css("display", "none");
+    $(document).ready(function() {
+
+        $.post(<?=json_encode($router->route("lista.verificaqr"));?>, null, function(){
+            $('#notificacao-qrcodes').css("display", "flex");
+        }, "json").fail(function(){
+
+        }).done(function(callback){
+            console.log(callback.num_qrcodes);
+        });
+    });
+    
+
+    
 </script>
-<?php $this->end();?>
+<?php $this->end(); ?>

@@ -5,13 +5,14 @@ namespace App\Controllers;
 use League\Plates\Engine;
 
 class Controller {
-    
-    protected $view;
 
+    /** @var Engine */
+    protected $view;
+    /** @var Router */
     protected $router;
 
     public function __construct($router, $dir = null, $globals = []){
-        $dir = $dir ?? dirname(__DIR__, 1) . "Views";
+        $dir = $dir ?? dirname(__DIR__, 1) . "\Views";
         $this->view = new Engine($dir, 'php');
         $this->router = $router;
 

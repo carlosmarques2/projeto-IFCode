@@ -23,7 +23,7 @@
                             <div class="card-header-title">Novo</div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="<?= url('cadastro') ?>" id="needs-validation" novalidate>
+                            <form method="POST" action="<?= $router->route('cadastro.novo'); ?>" id="needs-validation" novalidate>
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label class="form-label" for="validationCustom01">Nome</label>
@@ -160,7 +160,7 @@
 
         if (dados.proprietario.funcao == "Servidor") document.getElementById('gridRadios2').checked = true;
 
-        //document.getElementsByName('placa').item(0).setAttribute("value", dados.veiculo.placa);
+        document.getElementsByName('placa').item(0).setAttribute("value", dados.veiculo.placa);
         document.getElementsByName('modelo').item(0).setAttribute("value", dados.veiculo.modelo);
         document.getElementsByName('cor').item(0).setAttribute("value", dados.veiculo.cor);
 

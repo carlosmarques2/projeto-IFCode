@@ -23,7 +23,7 @@
 							</h5>
 
 						</div>
-						<a href="<?= url("cadastro") ?>" class="btn btn-primary"><i data-feather="plus"></i></a>
+						<a href="<?= $router->route('cadastro.home'); ?>" class="btn btn-primary"><i data-feather="plus"></i></a>
 					</div>
 				</div>
 			</div>
@@ -36,21 +36,21 @@
 								Lista de QR Codes
 							</h5>
 						</div>
-						<a href="<?= url("lista/qrcodes") ?>" class="btn btn-primary"><i data-feather="list"></i></a>
+						<a href="<?= $router->route('lista.qrcodes');?>" class="btn btn-primary"><i data-feather="list"></i></a>
 					</div>
 				</div>
 			</div>
 
 			<div class="col-md-6 col-lg-4 d-flex">
 				<div class="card border-0 bg-success text-white text-center mb-grid w-100">
-					<a href="<?= url("lista") ?>" class="link_users d-flex flex-row align-items-center h-100" title="Listar Proprietários">
+					<a href="<?= $router->route('lista.home'); ?>" class="link_users d-flex flex-row align-items-center h-100" title="Listar Proprietários">
 						<div class="card-icon d-flex align-items-center h-100 justify-content-center">
 							<i data-feather="users"></i>
 						</div>
 						<div class="card-body">
 							<div class="card-info-title">Proprietários</div>
 							<h3 class="card-title mb-0">
-								<?= count($proprietarios) ?>
+								<?= $numero_de_proprietarios ?>
 							</h3>
 						</div>
 					</a>

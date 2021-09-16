@@ -8,7 +8,9 @@ define('URL', URL_IP.'lista_prop.php?id=');
 
 define('SITE', 'IFCode');
 
-define('DIR_QRCODES', 'https://localhost/ifcode/public/assets/qrcodes');
+define('DIR_QRCODES', dirname(__DIR__, 2).'\public\qrcodes');
+
+define('URL_QRCODE', 'https://localhost/ifcode/public/proprietario');
 
 /**
  * Códigos de Erro

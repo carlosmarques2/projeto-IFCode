@@ -5,7 +5,7 @@
 
 		<p class="text-muted mb-5">
 			<?php
-			if (checaErro($error, array_keys($message))) :
+			if (verificaErro($error, array_keys($message))) :
 				echo $message[$error];
 			else :
 				echo $message['default'];

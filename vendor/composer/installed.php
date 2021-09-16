@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ca205b8b980a9e7d36ef2a1d2c125e02d6b41e04',
+    'reference' => 'e59f5bdc06a3837da9f7a9920dd52ba581e0d746',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,25 +18,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ca205b8b980a9e7d36ef2a1d2c125e02d6b41e04',
+      'reference' => 'e59f5bdc06a3837da9f7a9920dd52ba581e0d746',
     ),
-    'chillerlan/php-qrcode' => 
+    'bacon/bacon-qr-code' => 
     array (
-      'pretty_version' => '4.3.1',
-      'version' => '4.3.1.0',
+      'pretty_version' => '2.0.4',
+      'version' => '2.0.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'be3beb936c21fe53a4e7e8f7f3582e9f02443666',
-    ),
-    'chillerlan/php-settings-container' => 
-    array (
-      'pretty_version' => '2.1.1',
-      'version' => '2.1.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '98ccc1b31b31a53bcb563465c4961879b2b93096',
+      'reference' => 'f73543ac4e1def05f1a70bcd1525c8a157a1ad09',
     ),
     'coffeecode/datalayer' => 
     array (
@@ -56,6 +47,15 @@
       ),
       'reference' => '29f73e12351a116e9bbb3f695595777a09e18077',
     ),
+    'dasprid/enum' => 
+    array (
+      'pretty_version' => '1.0.3',
+      'version' => '1.0.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5abf82f213618696dda8e3bf6f64dd042d8542b2',
+    ),
     'league/plates' => 
     array (
       'pretty_version' => 'v3.4.0',
@@ -64,6 +64,15 @@
       array (
       ),
       'reference' => '6d3ee31199b536a4e003b34a356ca20f6f75496a',
+    ),
+    'simplesoftwareio/simple-qrcode' => 
+    array (
+      'pretty_version' => '4.2.0',
+      'version' => '4.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '916db7948ca6772d54bb617259c768c9cdc8d537',
     ),
   ),
 );
